@@ -1,6 +1,5 @@
 import React from 'react';
 
-import IconButton from '@mui/material/IconButton';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded';
 import FreeBreakfastIcon from '@mui/icons-material/FreeBreakfast';
@@ -9,7 +8,7 @@ import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 
 import EVENT_TYPES_ENUM from '../../constants/EVENT_TYPES_ENUM.enum';
 
-import './styles.css';
+import { ControlButton } from './styles';
 
 interface IconProps {
   type: EVENT_TYPES_ENUM;
@@ -25,22 +24,11 @@ const eventButtonTypes = {
   [EVENT_TYPES_ENUM.MEETING_NOTE]: <PersonRoundedIcon />,
 };
 
-const buttonStyles = {
-  border: '1px solid #bdbdbd',
-  background: '#ffffff',
-  mx: 0.5,
-};
-
 const Icon = ({ type, isActive, onClick }: IconProps) => {
   return (
-    <IconButton
-      className={'controlButton'}
-      sx={buttonStyles}
-      color={isActive ? 'primary' : 'default'}
-      onClick={onClick}
-    >
+    <ControlButton className={isActive ? 'active' : ''} onClick={onClick}>
       {eventButtonTypes[type]}
-    </IconButton>
+    </ControlButton>
   );
 };
 

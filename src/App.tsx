@@ -12,8 +12,8 @@ import {
   ButtonGroup,
   IconButton,
   Tooltip,
-  TextField,
   StepContent,
+  ThemeProvider,
 } from '@mui/material';
 
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -22,6 +22,9 @@ import EVENT_TYPES_ENUM from './constants/EVENT_TYPES_ENUM.enum';
 import Icon from './components/Icon';
 import calculateDate from './utils/calculateDate';
 import generateActivityLabel from './utils/generateActivityLabel';
+
+import { MainContainer, StepContainer, TextInput } from './styles';
+import theme from './theme';
 
 function App() {
   const [inputValue, setInputValue] = useState<string>('');
@@ -56,119 +59,105 @@ function App() {
     setActivities(activities.filter((activity) => activity.id !== id));
   };
 
-  const containerStyles = {
-    background: '#f7f7f7',
-    borderRadius: '5px',
-    ml: 3,
-    p: 2,
-  };
-
   return (
     <div className="App">
-      <Box sx={{ maxWidth: 600 }} p={8}>
-        <Stepper orientation="vertical">
-          <Step key={'main'}>
-            <StepLabel
-              StepIconProps={{
-                icon: <FormatListBulletedRoundedIcon color={'primary'} />,
-              }}
-            >
-              Activity Feed
-            </StepLabel>
-
-            <StepContent>
-              <Box sx={containerStyles}>
-                <TextField
-                  id="outlined-basic"
-                  variant="outlined"
-                  value={inputValue}
-                  fullWidth
-                  placeholder={'Add a note about Milton Romaguera...'}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  sx={{ background: '#ffffff', mb: 2 }}
-                />
-
-                <ButtonGroup
-                  sx={{ width: '100%' }}
-                  size="small"
-                  aria-label="small button group"
-                >
-                  {Object.values(EVENT_TYPES_ENUM).map((type) => (
-                    <Tooltip key={type} title={'text'}>
-                      <Icon
-                        type={type}
-                        isActive={eventType === type}
-                        onClick={() => setEventType(type)}
-                      />
-                    </Tooltip>
-                  ))}
-                </ButtonGroup>
-
-                <Box sx={{ width: '100%', textAlign: 'right' }}>
-                  <Button variant="contained" onClick={handleCreateActivity}>
-                    Submit
-                  </Button>
-                </Box>
-              </Box>
-            </StepContent>
-          </Step>
-
-          {activities?.map((activity) => (
-            <Step key={activity.id} active sx={{ position: 'relative' }}>
-              <Box
-                sx={{
-                  position: 'absolute',
-                  left: '-8px',
-                  top: '50%',
-                  transform: 'translate(0, -50%)',
+      <ThemeProvider theme={theme}>
+        <MainContainer>
+          <Stepper orientation="vertical">
+            <Step key={'main'}>
+              <StepLabel
+                StepIconProps={{
+                  icon: <FormatListBulletedRoundedIcon color={'primary'} />,
                 }}
               >
-                <Typography
-                  variant="caption"
-                  sx={{
-                    position: 'absolute',
-                    left: '-30px',
-                    top: '10px',
-                  }}
-                >
-                  {calculateDate(activity.createdAt)}
+                <Typography variant={'h6'} fontWeight={700}>
+                  Activity Feed
                 </Typography>
-
-                <Icon type={activity.type} />
-              </Box>
+              </StepLabel>
 
               <StepContent>
-                <Box
-                  display={'flex'}
-                  justifyContent={'space-between'}
-                  sx={containerStyles}
-                >
-                  <Box>
-                    {activity.label}
-                    <Typography
-                      variant="caption"
-                      textAlign={'left'}
-                      textTransform={'capitalize'}
-                      sx={{ width: '100%', display: 'flex' }}
-                    >
-                      {activity.description}
-                    </Typography>
-                  </Box>
+                <StepContainer>
+                  <TextInput
+                    id="outlined-basic"
+                    color={'secondary'}
+                    value={inputValue}
+                    fullWidth
+                    placeholder={'Add a note about Milton Romaguera...'}
+                    onChange={(e) => setInputValue(e.target.value)}
+                  />
 
-                  <Tooltip title="Delete">
-                    <IconButton
-                      onClick={handleRemoveActivity(activity.id)}
-                      aria-label="delete"
+                  <ButtonGroup
+                    sx={{ width: '100%' }}
+                    size="small"
+                    aria-label="small button group"
+                  >
+                    {Object.values(EVENT_TYPES_ENUM).map((type) => (
+                      <Tooltip key={type} title={'text'}>
+                        <Icon
+                          type={type}
+                          isActive={eventType === type}
+                          onClick={() => setEventType(type)}
+                        />
+                      </Tooltip>
+                    ))}
+                  </ButtonGroup>
+
+                  <Box sx={{ width: '100%', textAlign: 'right' }}>
+                    <Button
+                      variant="contained"
+                      color={'secondary'}
+                      onClick={handleCreateActivity}
                     >
-                      <DeleteIcon />
-                    </IconButton>
-                  </Tooltip>
-                </Box>
+                      Submit
+                    </Button>
+                  </Box>
+                </StepContainer>
               </StepContent>
             </Step>
-          ))}
-        </Stepper>
-      </Box>
+
+            {activities?.map((activity) => (
+              <Step key={activity.id} active>
+                <Box>
+                  <Typography variant="caption" ml={-4}>
+                    {calculateDate(activity.createdAt)}
+                  </Typography>
+
+                  <Icon type={activity.type} />
+                </Box>
+
+                <StepContent>
+                  <StepContainer
+                    mt={-5}
+                    display={'flex'}
+                    justifyContent={'space-between'}
+                  >
+                    <Box>
+                      {activity.label}
+                      <Typography
+                        variant="caption"
+                        textAlign={'left'}
+                        textTransform={'capitalize'}
+                        sx={{ width: '100%', display: 'flex' }}
+                      >
+                        {activity.description}
+                      </Typography>
+                    </Box>
+
+                    <Tooltip title="Delete">
+                      <IconButton
+                        onClick={handleRemoveActivity(activity.id)}
+                        aria-label="delete"
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </Tooltip>
+                  </StepContainer>
+                </StepContent>
+              </Step>
+            ))}
+          </Stepper>
+        </MainContainer>
+      </ThemeProvider>
     </div>
   );
 }

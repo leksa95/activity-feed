@@ -21,11 +21,11 @@ const generateActivityLabel = ({
   return (
     <Box display={'flex'} alignItems={'center'} justifyContent={'flex-start'}>
       <Typography mr={0.5} textAlign={'left'} variant={'subtitle2'}>
-        <span style={{ color: '#1976d2' }}>
+        <span style={{ color: '#00bcd4' }}>
           <b>You</b>
         </span>{' '}
         {variations[type]}{' '}
-        <span style={{ color: '#1976d2' }}>
+        <span style={{ color: '#00bcd4' }}>
           <b>{userName}</b>
         </span>
       </Typography>
