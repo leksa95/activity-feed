@@ -11,6 +11,8 @@ const useActivities = () => {
     inputValue: string,
     eventType: EVENT_TYPES_ENUM,
   ) => {
+    if (!inputValue) return;
+
     setActivities([
       ...activities,
       {
