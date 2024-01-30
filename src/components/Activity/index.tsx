@@ -28,7 +28,7 @@ interface ActivitiesProps {
 
 const Activity = ({ activity, handleRemoveActivity }: ActivitiesProps) => {
   return (
-    <Step key={activity.id} active>
+    <Step key={activity.id} active data-testid="activity">
       <Box>
         <Typography variant="caption" ml={-4}>
           {calculateDate(activity.createdAt)}

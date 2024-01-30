@@ -23,7 +23,11 @@ const eventButtonTypes = {
 
 const Icon = ({ type, isActive, onClick }: IconProps) => {
   return (
-    <ControlButton className={isActive ? 'active' : ''} onClick={onClick}>
+    <ControlButton
+      className={isActive ? 'active' : ''}
+      onClick={onClick}
+      data-testid="icon"
+    >
       {eventButtonTypes[type]}
     </ControlButton>
   );
