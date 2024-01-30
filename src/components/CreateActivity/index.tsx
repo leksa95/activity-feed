@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { StepContainer, TextInput } from '../../styles';
 import { Box, Button, ButtonGroup } from '@mui/material';
-import EVENT_TYPES_ENUM from '../../constants/EVENT_TYPES_ENUM.enum';
-import Icon from '../shared/Icon';
+import { EVENT_TYPES_ENUM } from '@constants/index';
+import Icon from '@components/shared/Icon';
+import { StepContainer, TextInput } from '../../styles';
 
 interface CreateActivityProps {
   handleCreateActivity: (

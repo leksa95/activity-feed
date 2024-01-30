@@ -8,10 +8,10 @@ import {
   Typography,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import Icon from '../shared/Icon';
-import calculateDate from '../../utils/calculateDate';
+import Icon from '@components/shared/Icon';
+import calculateDate from '@utils/calculateDate';
+import { EVENT_TYPES_ENUM } from '@constants/index';
 import { StepContainer } from '../../styles';
-import EVENT_TYPES_ENUM from '../../constants/EVENT_TYPES_ENUM.enum';
 
 export interface ActivityProps {
   id: string;

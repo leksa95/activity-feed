@@ -1,13 +1,10 @@
 import React from 'react';
-
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded';
 import FreeBreakfastIcon from '@mui/icons-material/FreeBreakfast';
 import LocalBarRoundedIcon from '@mui/icons-material/LocalBarRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
-
-import EVENT_TYPES_ENUM from '../../../constants/EVENT_TYPES_ENUM.enum';
-
+import { EVENT_TYPES_ENUM } from '@constants/index';
 import { ControlButton } from './styles';
 
 interface IconProps {

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { v4 as uuid } from 'uuid';
-import { ActivityProps } from '../components/Activity';
-import generateActivityLabel from '../utils/generateActivityLabel';
-import EVENT_TYPES_ENUM from '../constants/EVENT_TYPES_ENUM.enum';
+import { ActivityProps } from '@components/Activity';
+import generateActivityLabel from '@utils/generateActivityLabel';
+import { EVENT_TYPES_ENUM } from '@constants/index';
 
 const useActivities = () => {
   const [activities, setActivities] = useState<ActivityProps[]>([]);

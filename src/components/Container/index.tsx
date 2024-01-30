@@ -6,11 +6,11 @@ import {
   Stepper,
   Typography,
 } from '@mui/material';
-import { MainContainer } from '../../styles';
 import FormatListBulletedRoundedIcon from '@mui/icons-material/FormatListBulletedRounded';
-import CreateActivity from '../CreateActivity';
-import useActivities from '../../hooks/useActivities';
-import Activity from '../Activity';
+import CreateActivity from '@components/CreateActivity';
+import useActivities from '@hooks/useActivities';
+import Activity from '@components/Activity';
+import { MainContainer } from '../../styles';
 
 const Container = () => {
   const { activities, handleCreateActivity, handleRemoveActivity } =

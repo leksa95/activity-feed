@@ -1,7 +1,6 @@
 import React from 'react';
-
 import { Box, Typography } from '@mui/material';
-import EVENT_TYPES_ENUM from '../constants/EVENT_TYPES_ENUM.enum';
+import { EVENT_TYPES_ENUM } from '@constants/index';
 
 const generateActivityLabel = ({
   userName = 'Milton Romaguera',
