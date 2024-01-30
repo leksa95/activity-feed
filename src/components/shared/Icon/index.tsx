@@ -6,7 +6,7 @@ import FreeBreakfastIcon from '@mui/icons-material/FreeBreakfast';
 import LocalBarRoundedIcon from '@mui/icons-material/LocalBarRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 
-import EVENT_TYPES_ENUM from '../../constants/EVENT_TYPES_ENUM.enum';
+import EVENT_TYPES_ENUM from '../../../constants/EVENT_TYPES_ENUM.enum';
 
 import { ControlButton } from './styles';
 
